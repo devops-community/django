@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Load the variables from the ENV
-DB_USER=$USER
-DB_PASS=$PASS
-DB_NAME=$DB
+DB_USER=$DB_USER
+DB_PASS=$DB_PASS
+DB_NAME=$DB_NAME
 LOCAL_PY_PATH=$FILE
 
 cat > $LOCAL_PY_PATH << EOF

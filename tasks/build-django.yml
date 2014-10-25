@@ -33,7 +33,7 @@ steps:
       DB_NAME: django
 
   # Sync the database
-  - run: cd {{ workdir }}/projectname; /opt/virtualenvs/devops_{{ venv }}/bin/python manage.py --noinput syncdb
+  - run: cd {{ workdir }}/projectname; /opt/virtualenvs/devops_{{ venv }}/bin/python manage.py syncdb --noinput
 
   # Add the emperor applicaiton
   - run: devops uwsgi app add

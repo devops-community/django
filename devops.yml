@@ -1,0 +1,21 @@
+name: Django
+description: A simple boilerplate setup for your Django application, using NGINX, uWSGI, Python and MySQL.
+image: https://raw.githubusercontent.com/devops-community/django/master/django-logo.png
+vars:
+  git_url:
+    label: App Git URL
+    default: https://github.com/JuhaS/django-sample-app
+    description: The Git URL of the app you want to deploy
+  app_name:
+    label: Application name
+    default: django
+    description: Unique application name on this server
+  provider.name:
+    label: Cloud provider
+    default: digitalocean
+    description: The id of the provider you want to use, see http://docs.devo.ps/manual/nodes/#format
+  provider.size:
+    label: Server size
+    default: 66
+    description: Size of the server you will deploy your app on, see http://docs.devo.ps/providers/digitalocean/
+

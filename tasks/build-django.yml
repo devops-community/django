@@ -1,0 +1,45 @@
+# Find out more about tasks: http://docs.devo.ps/manual/tasks
+
+id: build-django
+name: Build the Django app
+type: task
+
+targets:
+  - django
+
+vars:
+  venv: django
+  workdir: /opt/djangoapp
+
+steps:
+  # Fetch / update the latest code 
+  - run: devops git update
+    options: 
+      dest: "{{ workdir }}"
+      repo: "{{ git_url }}"
+
+  # Install the dependencies from the app requirements.txt
+  - run: devops python app add
+    options:
+      requirements_file: "{{ workdir }}/requirements.txt"
+      virtualenv: "{{ venv }}"
+
+  # Prepare the django local.py config file
+  - run: devops scripts/install_local_py.sh
+    options:
+      FILE: "{{ workdir }}/projectname/settings/local.py"
+      DB_USER: django
+      DB_PASS: "{{ nodes.django.configuration.mysql.users.django.password }}"
+      DB_NAME: django
+
+  # Sync the database
+  - run: cd {{ workdir }}/projectname; /opt/virtualenvs/devops_{{ venv }}/bin/python manage.py syncdb
+
+  # Add the emperor applicaiton
+  - run: devops uwsgi app add
+    options:
+      name: "{{ app_name }}"
+      root: "{{ workdir }}"
+      module: wsgihandler:application
+      virtualenv: "{{ venv }}"
+

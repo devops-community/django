@@ -19,7 +19,7 @@ steps:
       repo: "{{ git_url }}"
 
   # Install the dependencies from the app requirements.txt
-  - run: devops python app add
+  - run: devops python packages add
     options:
       requirements_file: "{{ workdir }}/requirements.txt"
       virtualenv: "{{ venv }}"

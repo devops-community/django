@@ -7,6 +7,10 @@ type: task
 targets:
   - django
 
+triggers:
+  events:
+    - node.django.create.success
+
 vars:
   venv: django
   workdir: /opt/djangoapp

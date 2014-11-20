@@ -10,7 +10,7 @@ Simply use the link below:
 
 Once you've forked the repository, open it in devo.ps and you will be prompted for a few settings, including the Git URL for the code of your application.
 
-To deploy your app, you will need to navigate to the tasks page of the repo and run the task manually (click on "play" icon, right of the "Build Laravel app" task).
+To deploy your app, you will need to navigate to the tasks page of the repo and run the task manually (click on "play" icon, right of the "Build the Django app" task).
 
 ## What's in the box?
 
@@ -35,4 +35,4 @@ If you have any question, come ask us on the [devo.ps chat](https://www.hipchat.
 
 - [Nodes in devo.ps](http://docs.devo.ps/manual/nodes)
 - [Tasks in devo.ps](http://docs.devo.ps/manual/tasks)
-
+    

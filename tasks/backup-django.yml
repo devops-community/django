@@ -1,0 +1,28 @@
+# Find out more about tasks: http://docs.devo.ps/manual/tasks
+
+id: backup-django
+name: Backup Django
+type: task
+
+targets:
+  - django
+
+triggers:
+  crons:
+    # At 4am every day - via devo.ps
+    - '0 4 * * *'
+  webhooks: 
+    - path: backup/django
+
+vars:
+  workdir: /var/www/django
+
+steps:
+  # Backup the MySQL django database and workdir
+  - run: devops backup run
+    options:
+      path: '/opt/backup/%Y/%m/%d/%H-%M/django'
+      files:
+        - '{{ workdir }}'
+      mysql_dbs:
+        - django
